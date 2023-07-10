@@ -1,63 +1,52 @@
 #include <stdio.h>
 #include <stdarg.h>
+#include <string.h>
 
 int _printf(const char *format, ...)
-
 {
+	char ch;
+	char *str;
+	int count = 0;
+
 	va_list args;
-
-	va_start(args, format);
-
-	int count = 0;  /* Track the number of characters printed */
-	char ch;       /* Variable to store character argument */
-	char *str;     /* Variable to store string argument */
+        va_start(args, format);
 
 	while (*format != '\0')
-	
-	if (*format == '%')
-}
-	format++;  /* Move past '%' */
-
+    	{
 		if (*format == '%')
-	}
-	/* Print a literal '%' */
-		putchar('%');
-		count++;
-		}
-	else if (*format == 'c')
-{
-		/* Print a character */
-	*ch = (char)va_arg(args, int);
+		{
+			format++;
+		 
+		if (*format == '%')
+		{
+			putchar('%');
+			count++;
+	    	}
+		if (*format == 'c')
+			ch = (char)va_arg(args, int);
 		putchar(ch);
 		count++;
-}
-	else if (*format == 's')
-{
-		/* Print a string */
+	
+	if (*format == 's')
+	{
 		str = va_arg(args, char *);
 		while (*str != '\0')
-
 		{
 			putchar(*str);
-		count++;
-		str++;
-
+			count++;
+			str++;
 		}
-}
-
-format++;  /* Move to the next character */
-	}
+	}	
+	format++;
+		}
 	else
-{
-		/* Print literal characters */
+	{
 		putchar(*format);
 		count++;
 	}
-
-format++;
+	format++;
 	}
+	va_end(args);
 
-va_end(args);
-
-return (count);
+	return (count);
 }
