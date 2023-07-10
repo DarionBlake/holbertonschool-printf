@@ -1,52 +1,52 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
+/**
+ * _printf - prints anything.
+ * @format: a list of types of arguments passed to the function.
+ * Return: count
+ */
 
 int _printf(const char *format, ...)
 {
-	char ch;
-	char *str;
+	char ch, *str;
 	int count = 0;
-
 	va_list args;
-        va_start(args, format);
 
+	va_start(args, format);
 	while (*format != '\0')
-    	{
+	{
 		if (*format == '%')
 		{
 			format++;
-		 
-		if (*format == '%')
-		{
-			putchar('%');
+			if (*format == '%')
+			{
+				putchar('%');
+				count++;
+			}
+			if (*format == 'c')
+				ch = (char)va_arg(args, int);
+			putchar(ch);
 			count++;
-	    	}
-		if (*format == 'c')
-			ch = (char)va_arg(args, int);
-		putchar(ch);
-		count++;
-	
-	if (*format == 's')
-	{
-		str = va_arg(args, char *);
-		while (*str != '\0')
+			if (*format == 's')
+			{
+				str = va_arg(args, char *);
+				while (*str != '\0')
+				{
+					putchar(*str);
+					count++;
+					str++;
+				}
+			}
+			format++;
+		}
+		else
 		{
-			putchar(*str);
+			putchar(*format);
 			count++;
-			str++;
 		}
-	}	
-	format++;
-		}
-	else
-	{
-		putchar(*format);
-		count++;
-	}
-	format++;
+		format++;
 	}
 	va_end(args);
-
 	return (count);
 }
