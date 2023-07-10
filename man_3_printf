@@ -1,0 +1,43 @@
+.TH printf.c
+.SH NAME
+_printf.c \- is a printf is the C language function to do formatted printing.
+
+.SH
+SYNOPSIS_
+.B printf
+.RB [ -\j
+.IR printf.c]
+.RB [ \-h
+.IR printf.c]
+.RB [ \-p
+.IR always]
+.RB [ \-b
+.IR wow]
+.P
+.BR printf.c 
+.SH DESCRIPTION
+.B printf.c
+is a printf is the C language function to do formatted printing.  
+.SH OPTIONS
+.TP
+.B \-j
+printf.c formatted printing
+.TP
+.B \-h
+printf.c for printing
+.TP
+.B \-p
+printf.c printing
+.TP
+.B \-b
+printf.c options
+ printing
+.TP
+.B \-b
+printf.c options
+H AUTHOR
+.B Darion Blake at Holberton
+.SH COPYRIGHT
+.B GNU sandwhich 
+int _printf(const char *format, ...)
+
