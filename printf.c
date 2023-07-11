@@ -56,19 +56,17 @@ int _printf(const char *format, ...)
 			}
 			if (*format == 'i')
 			{
-			       	n = va_arg(args, int);
-	       			if (n > 0)
+				n = va_arg(args, int);
+				if (n > 0)
 				{
 					n *= -1;
 				}
 				while (n > 0)
 				{
-					while (n >0)
-						digit = n % 10;
-       					putchar(digit + '0');
-      					n = n / 10;
+					digit = n % 10;
+					putchar(digit + '0');
+					n = n / 10;
 				}
-
 			}
 			format++;
 		}
