@@ -19,8 +19,8 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			format++;
-			if (*format == '%')
+			formatt++;
+			if (*(format +1) == '%')
 			{
 				putchar('%');
 				count++;
@@ -69,8 +69,7 @@ int _printf(const char *format, ...)
 					putchar(digit + '0');
 					n = n / 10;
 				}
-			}
-			format++;
+			}	
 		}
 		else
 		{
@@ -80,6 +79,5 @@ int _printf(const char *format, ...)
 		format++;
 	}
 	va_end(args);
-	printf ("count %i\n", count);
 	return (count);
 }
