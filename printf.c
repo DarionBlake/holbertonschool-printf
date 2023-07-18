@@ -10,7 +10,7 @@
 int _printf(const char *format, ...)
 {
 	char ch, *str;
-	int count = 0;
+	int count = 0, reverse = 0, remainder;
 	va_list args;
 	int n = 0, digit = 0;
 
@@ -50,6 +50,13 @@ int _printf(const char *format, ...)
 					count++;
 					n *= -1;
 				}
+				while (n != 0) 
+				{
+				     	 remainder = n % 10;
+				     	 reverse = reverse * 10 + remainder;
+				     	 n /= 10;
+			      	}
+				n = reverse;
 				while (n > 0)
 				{	
 					digit = n % 10;
