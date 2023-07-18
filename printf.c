@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*(format +1) == '%')
+			if (*(format) == '%')
 			{
 				putchar('%');
 				count++;
@@ -28,8 +28,8 @@ int _printf(const char *format, ...)
 			if (*format == 'c')
 			{
 				ch = (char)va_arg(args, int);
-			putchar(ch);
-			count++;
+				putchar(ch);
+				count++;
 			}
 			if (*format == 's')
 			{
