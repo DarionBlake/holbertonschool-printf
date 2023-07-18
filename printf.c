@@ -25,13 +25,13 @@ int _printf(const char *format, ...)
 				putchar('%');
 				count++;
 			}
-			if (*format == 'c')
+			else if (*format == 'c')
 			{
 				ch = (char)va_arg(args, int);
 				putchar(ch);
 				count++;
 			}
-			if (*format == 's')
+			else if (*format == 's')
 			{
 				str = va_arg(args, char *);
 				while (*str != '\0')
@@ -41,35 +41,28 @@ int _printf(const char *format, ...)
 					str++;
 				}
 			}
-			if (*format == 'd')
+			else if (*format == 'd' || *format == 'i')
 			{
 				n = va_arg(args, int);
-				if (n > 0)
+				if (n < 0)
 				{
+					putchar('-');
+					count++;
 					n *= -1;
 				}
 				while (n > 0)
-				{
-					while (n >0)
+				{	
 					digit = n % 10;
 					putchar(digit + '0');
+					count++;
 					n = n / 10;
 				}
 			}
-			if (*format == 'i')
+			else
 			{
-				n = va_arg(args, int);
-				if (n > 0)
-				{
-					n *= -1;
-				}
-				while (n > 0)
-				{
-					digit = n % 10;
-					putchar(digit + '0');
-					n = n / 10;
-				}
-			}	
+				putchar(*format);
+                        	count++;
+			}
 		}
 		else
 		{
